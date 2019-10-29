@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">adapterviewsdemo</string>
+    <string-array name="items">
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+        <item>Pakistan</item>
+    </string-array>
+</resources>

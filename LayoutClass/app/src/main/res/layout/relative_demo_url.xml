@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dip"
+        android:layout_alignBaseline="@id/txtURL"
+        android:text="URL: " />
+
+    <EditText
+        android:id="@+id/txtURL"
+        android:layout_toRightOf="@id/lblURL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dip"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/lblDomain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txtDomain"
+        android:layout_marginLeft="4dip"
+        android:layout_below="@id/lblURL"
+        android:text="Domain: " />
+
+    <EditText
+        android:id="@+id/txtDomain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lblDomain"
+        android:layout_below="@id/txtURL"
+        android:layout_marginRight="4dip"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/btnCancel"
+        android:layout_below="@id/txtDomain"
+        android:text="OK" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDomain"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="4dip"
+        android:text="Cancel" />
+
+
+</RelativeLayout>

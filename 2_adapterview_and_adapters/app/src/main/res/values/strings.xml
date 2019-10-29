@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">2_adapterview_and_adapters</string>
+    <string name="size_template">Size: %d</string>
+    <string-array name="items">
+        <item>sit</item>
+        <item>amet</item>
+        <item>consectetuer</item>
+        <item>adipiscing</item>
+        <item>elit</item>
+        <item>morbi</item>
+        <item>vel</item>
+        <item>ligula</item>
+        <item>vitae</item>
+        <item>arcu</item>
+        <item>aliquet</item>
+        <item>mollis</item>
+        <item>etiam</item>
+        <item>vel</item>
+        <item>erat</item>
+        <item>placerat</item>
+        <item>ante</item>
+        <item>porttitor</item>
+        <item>sodales</item>
+        <item>pellentesque</item>
+        <item>augue</item>
+        <item>purus</item>
+    </string-array>
+</resources>

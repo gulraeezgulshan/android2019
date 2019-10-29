@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LayoutClass</string>
+    <string name="size_template">Size: %d</string>
+    <string name="icon">Icon</string>
+</resources>

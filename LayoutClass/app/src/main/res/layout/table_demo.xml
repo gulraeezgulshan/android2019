@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:stretchColumns="1"
+    android:layout_height="match_parent">
+
+    <TableRow>
+        <TextView android:text="Name: "/>
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="Phone: "/>
+
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:inputType="text" />
+    </TableRow>
+
+    <TableRow>
+        <CheckBox
+            android:id="@+id/chk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_span="3"
+            android:text="Are you android developer?" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/btnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text="OK" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/lblStatus"
+            android:layout_column="1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="No, I am not developer"/>
+    </TableRow>
+</TableLayout>
