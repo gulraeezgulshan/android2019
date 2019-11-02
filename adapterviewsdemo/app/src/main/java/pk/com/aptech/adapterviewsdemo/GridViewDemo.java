@@ -17,15 +17,16 @@ public class GridViewDemo extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gridview_demo);
 
-        items = getResources().getStringArray(R.array.items);
+        //items = getResources().getStringArray(R.array.items);
 
-        GridView g = (GridView)findViewById(R.id.grid);
-        g.setAdapter(new ArrayAdapter<String>(
+       // GridView g = (GridView)findViewById(R.id.grid);
+        ((GridView)findViewById(R.id.grid)).setAdapter(new ArrayAdapter<String>(
                         this,
                         R.layout.grid_cell,
-                        items));
+                        getResources().getStringArray(R.array.items)));
 
-        g.setOnItemClickListener(this);
+        ((GridView)findViewById(R.id.grid)).setOnItemClickListener(this);
+
     }
 
     @Override
