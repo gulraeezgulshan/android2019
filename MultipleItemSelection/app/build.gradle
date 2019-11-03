@@ -1,11 +1,10 @@
-//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "pk.com.aptech.autocomplete"
+        applicationId "pk.com.aptech.multipleitemselection"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -21,8 +20,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:recyclerview-v7:29.1.1'
-    implementation 'com.android.support:cardview-v7:29.1.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
