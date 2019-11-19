@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
+
                 fragmentTransaction.replace(R.id.layout, first);
+
                 fragmentTransaction.commit();
             }
         });

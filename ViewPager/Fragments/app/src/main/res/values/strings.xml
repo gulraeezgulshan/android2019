@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="hint">Editor #%d</string>
+</resources>

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+
 public class fragment1 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater,

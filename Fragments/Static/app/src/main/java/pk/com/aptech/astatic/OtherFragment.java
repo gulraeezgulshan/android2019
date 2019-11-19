@@ -1,8 +1,13 @@
 package pk.com.aptech.astatic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.ListFragment;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 
 public class OtherFragment extends ListFragment {
     private static final String[] items= { "lorem", "ipsum", "dolor",

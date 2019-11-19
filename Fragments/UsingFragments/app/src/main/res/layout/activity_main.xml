@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <fragment
         android:name="pk.com.aptech.usingfragments.fragment1"
         android:id="@+id/fragment1"
@@ -12,8 +11,8 @@
         android:layout_height="match_parent" />
 
     <fragment
-        android:name="pk.com.aptech.usingfragments.fragment2"
         android:id="@+id/fragment2"
+        android:name="pk.com.aptech.usingfragments.fragment2"
         android:layout_weight="1"
         android:layout_width="fill_parent"
         android:layout_height="match_parent" />

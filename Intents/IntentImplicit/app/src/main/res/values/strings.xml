@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IntentImplicit</string>
+    <string name="hello">Hello World, CallIntends!</string>
+</resources>
