@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:text="Please enter some text."
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toTopOf="@+id/activity_main"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.28" />
+    <EditText
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        tools:layout_editor_absoluteY="82dp"
+        android:id="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginTop="136dp"/>
+    <Button
+        android:text="Save"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSave"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:layout_marginTop="136dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        android:layout_marginEnd="16dp"
+        android:onClick="onClickSave" />
+    <Button
+        android:text="Load"
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLoad"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:layout_marginTop="48dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        android:layout_marginEnd="16dp"
+        android:onClick="onClickLoad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

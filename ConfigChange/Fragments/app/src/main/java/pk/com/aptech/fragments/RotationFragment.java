@@ -20,9 +20,7 @@ public class RotationFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
         setRetainInstance(true);
-
         View result=inflater.inflate(R.layout.activity_main, parent, false);
-
         result.findViewById(R.id.pick).setOnClickListener(this);
 
         View v=result.findViewById(R.id.view);
@@ -55,10 +53,7 @@ public class RotationFragment extends Fragment implements
     }
 
     public void pickContact(View v) {
-        Intent i=
-                new Intent(Intent.ACTION_PICK,
-                        ContactsContract.Contacts.CONTENT_URI);
-
+        Intent i= new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(i, PICK_REQUEST);
     }
 
