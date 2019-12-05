@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/activity_main"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:id="@+id/contactName"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="63dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        android:layout_marginEnd="63dp"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/contactID"
+        android:layout_marginBottom="40dp"
+        tools:layout_constraintBottom_creator="1" />
+    <TextView
+        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:id="@+id/contactID"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        android:layout_marginStart="63dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        android:layout_marginEnd="63dp"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main"
+        android:layout_marginBottom="56dp"
+        tools:layout_constraintBottom_creator="1" />
+    <ListView
+        android:layout_height="0dp"
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toTopOf="@+id/activity_main"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        app:layout_constraintBottom_toTopOf="@+id/contactName"
+        android:layout_marginBottom="5dp"
+        tools:layout_constraintBottom_creator="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
