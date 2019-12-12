@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "423683852423",
+    "firebase_url": "https://myfirebaseapp-eeac5.firebaseio.com",
+    "project_id": "myfirebaseapp-eeac5",
+    "storage_bucket": "myfirebaseapp-eeac5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423683852423:android:5d5f03d51c14afe9e7d022",
+        "android_client_info": {
+          "package_name": "pk.com.aptech.myfirstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423683852423-pmtpaufgsk1ldi2a37eimpti6gogb7n3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pk.com.aptech.myfirstapp",
+            "certificate_hash": "4f956922a7e731162234ee84569298774456df92"
+          }
+        },
+        {
+          "client_id": "423683852423-7icc23j41jff76n11oann77dc3und51v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpwLrbUw2cx_HqV1-EBzEBh_FGBX79DyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423683852423-7icc23j41jff76n11oann77dc3und51v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
