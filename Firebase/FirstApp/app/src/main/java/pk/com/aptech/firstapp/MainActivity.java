@@ -19,12 +19,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
 
     private static final Object TAG = "myTag";
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private ValueEventListener mListner;
 
     Button btnSave;
     Button btnFetch;
@@ -42,14 +45,47 @@ public class MainActivity extends AppCompatActivity {
         lblStatus = (TextView)findViewById(R.id.lblStatus);
         txtName = (EditText) findViewById(R.id.txtValue);
 
+        mListner = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //String value = dataSnapshot.getValue(String.class);
+
+                Map<String,Object> data = (Map<String,Object>)dataSnapshot.getValue();
+                String values = data.get("age").toString() + " : " + data.get("name").toString();
+                lblStatus.setText(values);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w((String) TAG, "Failed to read value.", databaseError.toException());
+            }
+        };
+
+
+
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+        myRef.child("users").addValueEventListener(mListner);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String value = txtName.getText().toString();
-                myRef.setValue(value).addOnSuccessListener(new OnSuccessListener<Void>() {
+                int age = 25;
+
+               // myRef.child("age").setValue(age);
+                //myRef.child("name").setValue(value);
+
+               // myRef.push().child("age").setValue(age);
+               // myRef.push().child("name").setValue(value);
+
+                String key = myRef.push().getKey();
+
+                myRef.child(key).child("age").setValue(age);
+                myRef.child(key).child("name").setValue(value);
+
+
+                /*myRef.child("age").setValue(value).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(MainActivity.this,"Data Inserted !", Toast.LENGTH_LONG).show();
@@ -59,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(MainActivity.this,e.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                });
-
-
+                });*/
 
             }
         });
@@ -69,11 +103,12 @@ public class MainActivity extends AppCompatActivity {
         btnFetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.child("").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.getValue(String.class);
                         lblStatus.setText(value);
+                        Log.w("OnDataChange","OnDataChange");
                     }
 
                     @Override
@@ -87,5 +122,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        myRef.removeEventListener(mListner);
+    }
 }
