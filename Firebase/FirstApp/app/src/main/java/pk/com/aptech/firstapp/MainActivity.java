@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         mListner = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //String value = dataSnapshot.getValue(String.class);
+               /* String value = dataSnapshot.getValue(String.class);
 
-               /* Map<String,Object> data = (Map<String,Object>)dataSnapshot.getValue();
+                Map<String,Object> data = (Map<String,Object>)dataSnapshot.getValue();
                 String values = data.get("age").toString() + " : " + data.get("name").toString();
                 lblStatus.setText(values);*/
 
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren())
                 {
                     Map<String,Object> data = (Map<String,Object>)snapshot.getValue();
-                    Log.d("myTAG", "onDataChange: Name: " + data.get("Name"));
-                    Log.d("myTAG", "onDataChange: Age: " + data.get("Age"));
+                    Log.d("myTAG", "onDataChange: Name: " + data.get("name"));
+                    Log.d("myTAG", "onDataChange: Age: " + data.get("age"));
                     Log.d("myTAG", "onDataChange: Key: " + snapshot.getKey());
                 }
             }
@@ -138,10 +138,11 @@ public class MainActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Map<String, Object> updatedValues = new HashMap<>();
 
-                updatedValues.put("/users/name","Saleem");
-                updatedValues.put("/users/age",14);
+                updatedValues.put("/users/name","Jahanzaib");
+                updatedValues.put("/users/age",40);
                 updatedValues.put("/-LwNFPtal6s_N0_kOWXY/name","Gulraiz");
                 updatedValues.put("/-LwNFPtal6s_N0_kOWXY/age",26);
 
@@ -152,20 +153,22 @@ public class MainActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // myRef.child("users").child("name").setValue(null);
+
+                // myRef.child("users").child("name").setValue(null);
 
                 final Task<Void> task = myRef.child("users").removeValue();
 
                 task.addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
+                        //Toast
                     }
                 });
 
                 task.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+
 
                     }
                 });
