@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mUserAdapter);
 
 
+
+
         mDataBase = FirebaseDatabase.getInstance();
-        mRef = mDataBase.getReference("-Lw4-QvbVe1xA0qMv3");
+        mRef = mDataBase.getReference();
 
         mReadData = (Button) findViewById(R.id.btnReadData);
         mRunCode = (Button) findViewById(R.id.btnRunCode);
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         //Log.d("myTag", "onChildAdded: Age: "+data.get("age"));
 
                         User user = dataSnapshot.getValue(User.class);
+                        user.setUid(dataSnapshot.getKey());
                         mDataList.add(user);
                         mUserAdapter.notifyDataSetChanged();
                     }
@@ -101,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        user.setUid(dataSnapshot.getKey());
 
+                        mDataList.remove(user);
+                        mUserAdapter.notifyDataSetChanged();
                     }
 
                     @Override
