@@ -18,12 +18,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import pk.com.aptech.childeventlistener.model.User;
 import pk.com.aptech.childeventlistener.model.UserAdapter;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private UserAdapter mUserAdapter;
 
     private List<User> mDataList;
+    private ValueEventListener mQueryListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +56,22 @@ public class MainActivity extends AppCompatActivity {
         mUserAdapter = new UserAdapter(this, mDataList);
         mRecyclerView.setAdapter(mUserAdapter);
 
+        mQueryListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    User user = snapshot.getValue(User.class);
+                    mDataList.add(user);
+                }
+                mUserAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        };
 
         mDataBase = FirebaseDatabase.getInstance();
         mRef = mDataBase.getReference();
@@ -77,52 +94,25 @@ public class MainActivity extends AppCompatActivity {
 
                 String key = mRef.push().getKey();
                 mRef.child(key).setValue(insertValue);
-
-
             }
         });
 
         this.mReadData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRef.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        //Map<String,Object> data = (Map<String, Object>) dataSnapshot.getValue();
-                        //Log.d("myTag", "onChildAdded: Name: "+data.get("name"));
-                        //Log.d("myTag", "onChildAdded: Age: "+data.get("age"));
 
-                        User user = dataSnapshot.getValue(User.class);
-                        user.setUid(dataSnapshot.getKey());
-                        mDataList.add(user);
-                        mUserAdapter.notifyDataSetChanged();
-                    }
+                //select * from users order by name
+                Query q1 = mRef.orderByChild("name");
 
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    }
+                //select * from user where age>30
+                Query q2 = mRef.orderByChild("age").endAt(30);
 
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
-                        user.setUid(dataSnapshot.getKey());
-
-                        mDataList.remove(user);
-                        mUserAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                //select * from user where age<30
+                Query q3 = mRef.orderByChild("age").startAt(30);
+                q1.addValueEventListener(mQueryListener);
             }
         });
+
     }
 }

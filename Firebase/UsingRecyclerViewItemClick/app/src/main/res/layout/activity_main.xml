@@ -36,6 +36,7 @@
         android:layout_height="59dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:visibility="gone"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +48,7 @@
         android:layout_width="376dp"
         android:layout_height="47dp"
         android:ems="10"
+        android:visibility="gone"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,8 +59,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userRecyclerView"
-        android:layout_width="329dp"
-        android:layout_height="350dp"
+        android:layout_width="334dp"
+        android:layout_height="468dp"
         app:layout_constraintBottom_toTopOf="@+id/btnReadData"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
