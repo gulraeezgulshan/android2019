@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="pk.com.aptech.sms">
-
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    package="pk.com.aptech.services">
 
     <application
         android:allowBackup="true"
@@ -14,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SMSReceiver"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,14 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".MyService" />
 
-        <receiver
-            android:name=".SMSReceiver" android:exported="true"
-            android:permission="android.permission.BROADCAST_SMS">
-            <intent-filter android:priority="1">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+      <!--  <service android:name=".MyService">
+            <intent-filter>
+                <action android:name="pk.com.aptech.MyService" />
             </intent-filter>
-        </receiver>
+        </service>-->
+
+        <!--<service android:name=".MyIntentService" />-->
 
     </application>
 

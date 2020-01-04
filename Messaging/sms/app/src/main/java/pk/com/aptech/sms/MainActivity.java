@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     BroadcastReceiver smsSentReceiver;
     IntentFilter intentFilter;
 
+
+
    private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         //---the "phone number" of your emulator should be 5554---
-        sendSMS("5554", "Hello my friends!");
+        sendSMS("5551", "Hello my friends!");
     }
     //---sends an SMS message---
     private void sendSMS(String phoneNumber, String message)

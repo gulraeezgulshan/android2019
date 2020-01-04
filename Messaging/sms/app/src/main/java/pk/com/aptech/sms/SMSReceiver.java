@@ -16,7 +16,8 @@ public class SMSReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-      /*  Bundle bundle = intent.getExtras();
+        /*
+        Bundle bundle = intent.getExtras();
         SmsMessage[] msgs = null;
         String str = "SMS from ";
 
@@ -24,13 +25,13 @@ public class SMSReceiver extends BroadcastReceiver {
             msgs = Telephony.Sms.Intents.getMessagesFromIntent(intent);
 
             for (int i=0; i<msgs.length; i++){
-                str += msgs[i].getMessageBody().toString();
+                str = str + msgs[i].getMessageBody().toString();
             }
             Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
             Log.d("SMSReceiver", str);
         }*/
 
-        Bundle bundle = intent.getExtras();
+       Bundle bundle = intent.getExtras();
         SmsMessage[] msgs = null;
         String str = "SMS from ";
         if (bundle != null)
@@ -47,10 +48,9 @@ public class SMSReceiver extends BroadcastReceiver {
             }
             Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
             Log.d("SMSReceiver", str);
-            //this.abortBroadcast();
+            this.abortBroadcast();
 
 
-            //Broadcast Intent
             Intent broadcastIntent = new Intent();
             broadcastIntent.setAction("SMS_RECEIVED_ACTION");
             broadcastIntent.putExtra("sms", str);
