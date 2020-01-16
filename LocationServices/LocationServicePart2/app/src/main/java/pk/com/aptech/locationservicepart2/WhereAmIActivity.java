@@ -79,7 +79,6 @@ public class WhereAmIActivity extends AppCompatActivity {
                 .setInterval(5000)
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -99,15 +98,13 @@ public class WhereAmIActivity extends AppCompatActivity {
         }
 
         // Check of the location settings are compatible with our Location Request.
-        LocationSettingsRequest.Builder builder =
-                new LocationSettingsRequest.Builder()
-                        .addLocationRequest(mLocationRequest);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
 
         SettingsClient client = LocationServices.getSettingsClient(this);
 
         Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
-        task.addOnSuccessListener(this,
-                new OnSuccessListener<LocationSettingsResponse>() {
+
+        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
                     @Override
                     public void onSuccess(LocationSettingsResponse
                                                   locationSettingsResponse) {
@@ -145,7 +142,6 @@ public class WhereAmIActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
@@ -160,7 +156,6 @@ public class WhereAmIActivity extends AppCompatActivity {
                 getLastLocation();
         }
     }
-
     private void getLastLocation() {
         FusedLocationProviderClient fusedLocationClient;
         fusedLocationClient =
@@ -178,7 +173,6 @@ public class WhereAmIActivity extends AppCompatActivity {
                     });
         }
     }
-
     private void updateTextView(Location location) {
         String latLongString = "No location found";
         if (location != null) {
@@ -201,10 +195,9 @@ public class WhereAmIActivity extends AppCompatActivity {
             fusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null);
         }
     }
-
     @Override
-    protected void onActivityResult(int requestCode,
-                                    int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);

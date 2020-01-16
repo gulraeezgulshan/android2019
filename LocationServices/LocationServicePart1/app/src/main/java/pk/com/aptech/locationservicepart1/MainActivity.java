@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             double alt = location.getAltitude();
             double acc = location.getAccuracy();
 
-            latLongString = "Lat:" + lat + "\nLong:" + lng+ "\nAlt:" + alt+ "\nLong:" + acc;
+            latLongString = "Lat:" + lat + "\nLong:" + lng+ "\nAlt:" + alt+ "\nAccuracy:" + acc;
         }
         mTextView.setText(latLongString);
     }

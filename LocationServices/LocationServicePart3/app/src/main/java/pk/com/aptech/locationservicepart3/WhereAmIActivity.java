@@ -254,10 +254,9 @@ public class WhereAmIActivity extends AppCompatActivity {
         } else {
             Geocoder gc = new Geocoder(this, Locale.getDefault());
             try {
-                List<Address> addresses
-                        = gc.getFromLocation(location.getLatitude(),
-                        location.getLongitude(),
+                List<Address> addresses = gc.getFromLocation(location.getLatitude(), location.getLongitude(),
                         1); // One Result
+
 
                 StringBuilder sb = new StringBuilder();
 
