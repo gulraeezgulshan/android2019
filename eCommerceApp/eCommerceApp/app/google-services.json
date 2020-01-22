@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "430377217478",
+    "firebase_url": "https://ecommerceapp-e0b29.firebaseio.com",
+    "project_id": "ecommerceapp-e0b29",
+    "storage_bucket": "ecommerceapp-e0b29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430377217478:android:fa828faca9a128fea556c7",
+        "android_client_info": {
+          "package_name": "pk.com.aptech.ecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430377217478-o5bmuq3kdpooah2ovnkmc1pu6hp94l1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pk.com.aptech.ecommerceapp",
+            "certificate_hash": "4f956922a7e731162234ee84569298774456df92"
+          }
+        },
+        {
+          "client_id": "430377217478-mqldi9hj8jp44eatq6c2u7jlv60r9j49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ_TCFgAsPBAJK6kS-ELeITddfvgxmlms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430377217478-mqldi9hj8jp44eatq6c2u7jlv60r9j49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
