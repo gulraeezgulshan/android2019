@@ -37,6 +37,8 @@ public class SiginInFragment extends Fragment {
     private ImageButton closeBtn;
     private Button signinBtn;
 
+    private TextView forgotPassword;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class SiginInFragment extends Fragment {
         password = view.findViewById(R.id.signin_etPassword);
         closeBtn = view.findViewById(R.id.signin_ibtnClose);
         signinBtn = view.findViewById(R.id.signin_btnSignIn);
+        forgotPassword = view.findViewById(R.id.signin_tvForgotPassword);
 
         return view;
     }
@@ -61,6 +64,13 @@ public class SiginInFragment extends Fragment {
            @Override
            public void onClick(View v) {
                setTargetFragment(new SignUpFragment());
+           }
+       });
+
+       forgotPassword.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               setTargetFragment(new ResetPasswordFragment());
            }
        });
     }
