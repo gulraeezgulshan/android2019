@@ -11,12 +11,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +40,11 @@ public class ResetPasswordFragment extends Fragment {
     private FrameLayout parentFrameLayout;
     private FirebaseAuth firebaseAuth;
 
+    private ViewGroup emailIconContainer;
+    private ImageView emailIcon;
+    private TextView emailIconText;
+    private ProgressBar progressBar;
+
     public ResetPasswordFragment() {
         // Required empty public constructor
     }
@@ -51,6 +59,11 @@ public class ResetPasswordFragment extends Fragment {
         registeredEmail = view.findViewById(R.id.reset_etEmailAddress);
         resetPasswordButton = view.findViewById(R.id.reset_btnResetPassword);
         goBackText = view.findViewById(R.id.reset_tvGoBack);
+
+        emailIconContainer = view.findViewById(R.id.reset_linearLayout);
+        emailIcon = view.findViewById(R.id.reset_emailIcon);
+        emailIconText = view.findViewById(R.id.reset_emailIconText);
+        progressBar = view.findViewById(R.id.reset_progressBar);
 
         parentFrameLayout = getActivity().findViewById(R.id.register_frameLayout);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -89,21 +102,31 @@ public class ResetPasswordFragment extends Fragment {
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetPasswordButton.setEnabled(false);
 
+                TransitionManager.beginDelayedTransition(emailIconContainer);
+                emailIcon.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
+
+                resetPasswordButton.setEnabled(false);
                 firebaseAuth.sendPasswordResetEmail(registeredEmail.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful())
                                 {
-                                    
+
                                 }
                                 else
                                 {
                                     String error = task.getException().getMessage();
-                                    Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    emailIconText.setText(error);
+                                    emailIconText.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                    TransitionManager.beginDelayedTransition(emailIconContainer);
+                                    emailIconText.setVisibility(View.VISIBLE);
                                 }
+                                progressBar.setVisibility(View.GONE);
+                                resetPasswordButton.setEnabled(true);
                             }
                         });
             }
