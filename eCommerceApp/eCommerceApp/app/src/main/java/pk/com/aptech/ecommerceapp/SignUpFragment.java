@@ -27,6 +27,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -48,6 +53,7 @@ public class SignUpFragment extends Fragment {
     private ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
 
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
@@ -75,6 +81,7 @@ public class SignUpFragment extends Fragment {
         progressBar = view.findViewById(R.id.signup_progressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         return  view;
     }
@@ -160,7 +167,6 @@ public class SignUpFragment extends Fragment {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 checkEmailAndPassword();
             }
         });
@@ -173,18 +179,35 @@ public class SignUpFragment extends Fragment {
             {
                 progressBar.setVisibility(View.VISIBLE);
                 signupButton.setEnabled(false);
-                firebaseAuth.
-                        createUserWithEmailAndPassword(
-                                email.getText().toString(),
-                                password.getText().toString()).
-                        addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    Intent mainIntent = new Intent(getActivity(), MainActivity.class);
-                                    startActivity(mainIntent);
-                                    getActivity().finish();
+                                    Map<Object,String> userData = new HashMap<>();
+
+                                    userData.put("fullname", fullName.getText().toString());
+                                    firebaseFirestore.collection("USERS")
+                                            .add(userData)
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                    if (task.isSuccessful())
+                                                    {
+                                                        Intent mainIntent = new Intent(getActivity(), MainActivity.class);
+                                                        startActivity(mainIntent);
+                                                        getActivity().finish();
+                                                    }
+                                                    else
+                                                    {
+                                                        progressBar.setVisibility(View.INVISIBLE);
+                                                        signupButton.setEnabled(true);
+                                                        String error = task.getException().getMessage();
+                                                        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
                                 }
                                 else
                                 {

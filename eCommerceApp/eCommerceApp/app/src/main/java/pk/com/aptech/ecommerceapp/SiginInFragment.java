@@ -11,7 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -27,12 +30,26 @@ public class SiginInFragment extends Fragment {
 
     private TextView dontHaveAnAccount;
     private FrameLayout parentFrameLayout;
+
+    private EditText email;
+    private EditText password;
+
+    private ImageButton closeBtn;
+    private Button signinBtn;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_sigin_in, container, false);
+
         dontHaveAnAccount = view.findViewById(R.id.signin_tvDontHaveAccount);
         parentFrameLayout = getActivity().findViewById(R.id.register_frameLayout);
+
+        email = view.findViewById(R.id.signin_etEmail);
+        password = view.findViewById(R.id.signin_etPassword);
+        closeBtn = view.findViewById(R.id.signin_ibtnClose);
+        signinBtn = view.findViewById(R.id.signin_btnSignIn);
+
         return view;
     }
 
@@ -49,6 +66,7 @@ public class SiginInFragment extends Fragment {
     }
 
     private void setTargetFragment(Fragment fragment) {
+
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slideout_from_left);
         fragmentTransaction.replace(parentFrameLayout.getId(), fragment);
