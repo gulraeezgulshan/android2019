@@ -55,7 +55,7 @@ public class SignUpFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
 
-    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+"; //regex
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -85,7 +85,6 @@ public class SignUpFragment extends Fragment {
 
         return  view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -97,12 +96,18 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainIntent();
+            }
+        });
 
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                checkInputs();
+                //checkInputs();
             }
 
             @Override
@@ -179,6 +184,7 @@ public class SignUpFragment extends Fragment {
             {
                 progressBar.setVisibility(View.VISIBLE);
                 signupButton.setEnabled(false);
+
                 firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -186,8 +192,8 @@ public class SignUpFragment extends Fragment {
                                 if(task.isSuccessful())
                                 {
                                     Map<Object,String> userData = new HashMap<>();
-
                                     userData.put("fullname", fullName.getText().toString());
+
                                     firebaseFirestore.collection("USERS")
                                             .add(userData)
                                             .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -195,9 +201,7 @@ public class SignUpFragment extends Fragment {
                                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                                     if (task.isSuccessful())
                                                     {
-                                                        Intent mainIntent = new Intent(getActivity(), MainActivity.class);
-                                                        startActivity(mainIntent);
-                                                        getActivity().finish();
+                                                        mainIntent();
                                                     }
                                                     else
                                                     {
@@ -229,6 +233,12 @@ public class SignUpFragment extends Fragment {
         {
             email.setError("Invalid Email");
         }
+    }
+
+    private void mainIntent() {
+        Intent mainIntent = new Intent(getActivity(), MainActivity.class);
+        startActivity(mainIntent);
+        getActivity().finish();
     }
 
     private void checkInputs() {
