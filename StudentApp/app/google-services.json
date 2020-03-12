@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "948321837963",
+    "firebase_url": "https://studentapp-a21b4.firebaseio.com",
+    "project_id": "studentapp-a21b4",
+    "storage_bucket": "studentapp-a21b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948321837963:android:c4f02fee096e4ed775058e",
+        "android_client_info": {
+          "package_name": "pk.com.aptech.studentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948321837963-gbghu73l7e3glqg0cgnpq9a5mqthvtn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pk.com.aptech.studentapp",
+            "certificate_hash": "4f956922a7e731162234ee84569298774456df92"
+          }
+        },
+        {
+          "client_id": "948321837963-c448vmbs8qhh9rjon4qo73gc4icu5ues.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrTJGJ4tC0rIpix7HcjTu1BQtz9u2Gxj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948321837963-c448vmbs8qhh9rjon4qo73gc4icu5ues.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

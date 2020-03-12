@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_menu_dashboard"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_students_list"
+            android:icon="@drawable/ic_menu_students"
+            android:title="Students" />
+
+        <item
+            android:id="@+id/nav_enrollment"
+            android:icon="@drawable/ic_menu_enrollment"
+            android:title="Enrollment" />
+        <item
+            android:id="@+id/nav_jobs"
+            android:icon="@drawable/ic_menu_jobs"
+            android:title="Jobs" />
+        <item
+            android:id="@+id/nav_exams"
+            android:icon="@drawable/ic_menu_exams"
+            android:title="Exams" />
+
+        <item
+            android:id="@+id/nav_fee"
+            android:icon="@drawable/ic_menu_fees"
+            android:title="Fee" />
+
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/ic_menu_attendance"
+            android:title="Attendance" />
+
+        <item
+            android:id="@+id/nav_teachers"
+            android:icon="@drawable/ic_menu_teachers"
+            android:title="Teachers" />
+
+        <item
+            android:id="@+id/nav_noticeboard"
+            android:icon="@drawable/ic_menu_noticeboard"
+            android:title="Noticeboard" />
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_menu_attendance"
+            android:title="Feedback" />
+    </group>
+
+    <item android:title="My Account Info">
+        <menu>
+            <item
+                android:id="@+id/nav_myaccount"
+                android:icon="@drawable/ic_menu_myaccount"
+                android:title="My Account" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_logout"
+                android:title="Log out" />
+        </menu>
+    </item>
+
+
+</menu>
